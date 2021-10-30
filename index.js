@@ -10,14 +10,12 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Fly Earth server is runnig ");
-});
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.oisx1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+console.log(uri);
 async function run() {
   try {
     await client.connect();
@@ -137,6 +135,9 @@ async function run() {
     // await client.close();
   }
 }
+app.get("/", (req, res) => {
+  res.send("Fly Earth server is runnig ");
+});
 run().catch(console.dir);
 app.listen(port, () => {
   console.log("server is runnig the port", port);
