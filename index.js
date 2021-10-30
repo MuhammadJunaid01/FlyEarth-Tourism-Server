@@ -90,10 +90,21 @@ async function run() {
     });
     app.get("/confimorder", async (req, res) => {
       const query = {};
-      const result = await ConfirmOrder.findOne(query);
-      console.log(result);
+      const cursor = ConfirmOrder.find(query);
+      const result = await cursor.toArray();
+      // console.log("confirm orders", result);
       res.json(result);
     });
+    // manage delete api
+    app.delete("/delete/:id", async (req, res) => {
+      // console.log("delete hitted", req.params.id);
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await ConfirmOrder.deleteOne(query);
+      console.log("delete success", result);
+      res.json(result);
+    });
+
     // add hotel
     app.post("/addhotel", async (req, res) => {
       console.log("confirm order api hitted");
