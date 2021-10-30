@@ -57,7 +57,7 @@ async function run() {
       const result = await cursor.toArray();
       res.json(result);
     });
-    // order get post api
+    // order get post api some
     app.get("/ordersumary", async (req, res) => {
       const query = {};
       const cursor = orders.find(query);
