@@ -135,6 +135,9 @@ async function run() {
     // await client.close();
   }
 }
+app.get("helo", (req, res) => {
+  res.send("hello testing api");
+});
 app.get("/", (req, res) => {
   res.send("Fly Earth server is runnig ");
 });
