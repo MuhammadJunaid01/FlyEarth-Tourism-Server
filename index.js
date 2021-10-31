@@ -1,7 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
-const cookie = require("cookie-parser");
 require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
