@@ -95,10 +95,12 @@ async function run() {
     });
     // manage delete api
     app.delete("/delete/:id", async (req, res) => {
+      console.log("hitted delete ");
       // console.log("delete hitted", req.params.id);
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await ConfirmOrder.deleteOne(query);
+
       console.log("delete success", result);
       res.json(result);
     });
@@ -135,7 +137,7 @@ async function run() {
     // await client.close();
   }
 }
-app.get("helo", (req, res) => {
+app.get("/helo", (req, res) => {
   res.send("hello testing api");
 });
 app.get("/", (req, res) => {
