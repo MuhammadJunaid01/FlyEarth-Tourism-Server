@@ -96,9 +96,9 @@ async function run() {
       console.log("hitted delete ");
       // console.log("delete hitted", req.params.id);
       const id = req.params.id;
-      const query = { _id: ObjectId(id) };
+      console.log(id);
+      const query = { _id: req.params.id };
       const result = await ConfirmOrder.deleteOne(query);
-
       console.log("delete success", result);
       res.json(result);
     });
